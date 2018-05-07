@@ -15,6 +15,7 @@ gem "image_processing", "~> 1.2"
 gem "font-awesome-rails"
 gem 'country_select'
 gem 'mailgun-ruby'
+gem 'omniauth-google-oauth2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
