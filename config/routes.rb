@@ -23,4 +23,13 @@ Rails.application.routes.draw do
   get 'profile/edit', to: 'profiles#edit'
   patch 'profile/edit', to: 'profiles#update' 
   delete 'profile', to: 'profiles#destroy'
+
+  # Products controller
+  get 'sign_up/product', to: 'products#new'
+  post 'product', to: 'products#create'
+  get 'product/:id', to: 'products#show'
+  get 'products', to: 'products#index'
+  get 'product/:id/edit', to: 'products#edit'
+  patch 'product/:id', to: 'products#update'
+  delete 'product/:id', to: 'products#destroy'
 end

@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507064320) do
+ActiveRecord::Schema.define(version: 20180507125237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "locations", force: :cascade do |t|
+    t.string "location"
+    t.string "country"
+    t.string "continent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.bigint "user_id"
+    t.decimal "price_per_day"
+    t.string "vehicle_model"
+    t.string "vehicle_capacity"
+    t.text "vehicle_description"
+    t.text "vehicle_image_data"
+    t.string "cancellation_policy"
+    t.text "things_to_note"
+    t.bigint "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_products_on_location_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.bigint "user_id"
@@ -69,5 +93,7 @@ ActiveRecord::Schema.define(version: 20180507064320) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "products", "locations"
+  add_foreign_key "products", "users"
   add_foreign_key "profiles", "users"
 end

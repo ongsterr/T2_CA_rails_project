@@ -22,6 +22,9 @@ uploaded_file_2 = uploader.upload(file_2)
 file_3 = File.new(Rails.root.join('app/assets/images/T2_logo.png'))
 uploaded_file_3 = uploader.upload(file_3)
 
+file_4 = File.new(Rails.root.join('app/assets/images/jazz.jpg'))
+uploaded_file_4 = uploader.upload(file_4)
+
 admin_profile = {
     user_id: "1",
     first_name: "Christopher",
@@ -51,5 +54,57 @@ admin_profile = {
     verified?: 0
 }
 
+test_product = {
+    user_id: "1",
+    price_per_day: 200.00,
+    vehicle_model: "Honda Jazz",
+    vehicle_capacity: 5,
+    vehicle_description: "Super spacious and comfortable!",
+    vehicle_image_data: uploaded_file_4.to_json,
+    cancellation_policy: "Full refund only if cancellation is 45 days before trip.",
+    things_to_note: "Just be ready to have fun!",
+    location_id: "1"
+}
+
+location = [
+    {
+        location: "Melbourne",
+        country: "Australia",
+        continent: "Asia Pacific"
+    },
+    {
+        location: "Perth",
+        country: "Australia",
+        continent: "Asia Pacific"
+    },
+    {
+        location: "Brisbane",
+        country: "Australia",
+        continent: "Asia Pacific"
+    },
+    {
+        location: "Sydney",
+        country: "Australia",
+        continent: "Asia Pacific"
+    },
+    {
+        location: "Auckland",
+        country: "New Zealand",
+        continent: "Asia Pacific"
+    },
+    {
+        location: "Wellington",
+        country: "New Zealand",
+        continent: "Asia Pacific"
+    },
+    {
+        location: "Christchurch",
+        country: "New Zealand",
+        continent: "Asia Pacific"
+    }
+]
+
 User.create!(admin_user) {p "Admin user created"}
 Profile.create!(admin_profile) {p "Admin profile created"}
+Location.create!(location) {p "Product location seeded"}
+Product.create!(test_product) {p "Product created"}

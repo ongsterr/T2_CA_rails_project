@@ -1,0 +1,10 @@
+<h1>Product Display and Booking Form</h1>
+<p>Find me in app/views/products/show.html.erb</p>
+<p><%= number_to_currency @product.price_per_day %></p>
+<p><%= @product.vehicle_model %></p>
+<p><%= @product.vehicle_capacity %></p>
+<p><%= @product.vehicle_description %></p>
+<p><%= image_tag @product.vehicle_image_url %></p>
+<p><%= @product.cancellation_policy %></p>
+<p><%= @product.things_to_note %></p>
+<p><%= @product.location.location %></p>
