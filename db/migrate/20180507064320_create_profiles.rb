@@ -18,7 +18,7 @@ class CreateProfiles < ActiveRecord::Migration[5.1]
       t.string :addr_state
       t.string :addr_postcode
       t.string :addr_country_code
-      t.string passport_number
+      t.string :passport_number
       t.date :passport_expiry_date
       t.string :passport_country_code
       t.text :passport_image_data

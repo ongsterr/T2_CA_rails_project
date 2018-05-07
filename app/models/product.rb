@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  belongs_to :user
+  belongs_to :transporter, class_name: 'User'
   belongs_to :location
   has_many :bookings
 

@@ -55,7 +55,7 @@ admin_profile = {
 }
 
 test_product = {
-    user_id: "1",
+    transporter_id: "1",
     price_per_day: 200.00,
     vehicle_model: "Honda Jazz",
     vehicle_capacity: 5,
@@ -64,6 +64,20 @@ test_product = {
     cancellation_policy: "Full refund only if cancellation is 45 days before trip.",
     things_to_note: "Just be ready to have fun!",
     location_id: "1"
+}
+
+test_booking = {
+    product_id: "1",
+    transporter_id: "1",
+    traveler_id: "1",
+    booking_ref_number: "ABC123",
+    booking_date_from: "15/06/2018",
+    booking_date_to: "18/06/2018",
+    number_of_traveler: 4,
+    transporter_cost: 20000,
+    platform_cost: 4000,
+    total_cost: 24000,
+    booking_confirmed?: true
 }
 
 location = [
@@ -108,3 +122,4 @@ User.create!(admin_user) {p "Admin user created"}
 Profile.create!(admin_profile) {p "Admin profile created"}
 Location.create!(location) {p "Product location seeded"}
 Product.create!(test_product) {p "Product created"}
+Booking.create!(test_booking) {p "Booking completed"}

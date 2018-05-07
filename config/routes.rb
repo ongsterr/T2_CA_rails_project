@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'pages#home'
   
@@ -32,4 +32,13 @@ Rails.application.routes.draw do
   get 'product/:id/edit', to: 'products#edit'
   patch 'product/:id', to: 'products#update'
   delete 'product/:id', to: 'products#destroy'
+
+  # Bookings controller  
+  get 'booking/new', to: 'bookings#new'
+  post 'booking', to: 'bookings#create'
+  get 'booking/:id', to: 'bookings#show'
+  get 'bookings', to: 'bookings#index'
+  get 'booking/:id/edit', to: 'bookings#edit'
+  patch 'booking/:id', to: 'bookings#update'
+  delete 'booking/:id', to: 'bookings#destroy'
 end

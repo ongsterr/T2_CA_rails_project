@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.user = current_user
+    @product.transporter = current_user
 
     if @product.save
         flash[:notice] = 'Product created!'

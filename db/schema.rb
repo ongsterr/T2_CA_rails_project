@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507125237) do
+ActiveRecord::Schema.define(version: 20180507145532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "transporter_id"
+    t.bigint "traveler_id"
+    t.string "booking_ref_number"
+    t.date "booking_date_from"
+    t.date "booking_date_to"
+    t.integer "number_of_traveler"
+    t.decimal "transporter_cost"
+    t.decimal "platform_cost"
+    t.decimal "total_cost"
+    t.boolean "booking_confirmed?"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_bookings_on_product_id"
+    t.index ["transporter_id"], name: "index_bookings_on_transporter_id"
+    t.index ["traveler_id"], name: "index_bookings_on_traveler_id"
+  end
 
   create_table "locations", force: :cascade do |t|
     t.string "location"
@@ -24,7 +43,7 @@ ActiveRecord::Schema.define(version: 20180507125237) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "transporter_id"
     t.decimal "price_per_day"
     t.string "vehicle_model"
     t.string "vehicle_capacity"
@@ -36,7 +55,7 @@ ActiveRecord::Schema.define(version: 20180507125237) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["location_id"], name: "index_products_on_location_id"
-    t.index ["user_id"], name: "index_products_on_user_id"
+    t.index ["transporter_id"], name: "index_products_on_transporter_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -93,7 +112,10 @@ ActiveRecord::Schema.define(version: 20180507125237) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "products"
+  add_foreign_key "bookings", "users", column: "transporter_id"
+  add_foreign_key "bookings", "users", column: "traveler_id"
   add_foreign_key "products", "locations"
-  add_foreign_key "products", "users"
+  add_foreign_key "products", "users", column: "transporter_id"
   add_foreign_key "profiles", "users"
 end

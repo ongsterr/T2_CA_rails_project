@@ -3,7 +3,9 @@ class User < ApplicationRecord
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:google_oauth2]
     has_one :profile
-    has_many :products
+    has_many :products, foreign_key: :transporter_id
+    has_many :bookings, foreign_key: :transporter_id
+    has_many :bookings, foreign_key: :traveler_id
     
     def self.from_omniauth(access_token)
         data = access_token.info

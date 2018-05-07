@@ -1,0 +1,12 @@
+<h1>Bookings#show</h1>
+<p>Find me in app/views/bookings/show.html.erb</p>
+
+<p><%= @booking.transporter.email %></p>
+<p><%= @booking.traveler.email %></p>
+<p><%= @booking.booking_ref_number %></p>
+<p><%= @booking.booking_date_from %></p>
+<p><%= @booking.booking_date_to %></p>
+<p><%= @booking.number_of_traveler %></p>
+<p><%= number_to_currency @booking.transporter_cost.to_f/100 %></p>
+<p><%= number_to_currency @booking.platform_cost.to_f/100 %></p>
+<p><%= number_to_currency @booking.total_cost.to_f/100 %></p>
