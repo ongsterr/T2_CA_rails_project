@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  # before_action :authenticate_user! # just for testing Devise
+  before_action :authenticate_user! # just for testing Devise
 
   def home
   end
