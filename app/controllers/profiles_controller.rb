@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
-  #Technically, I don't need the action "New" because my edit view = new view
+  # Technically, I don't need the action "New" because my edit view = new view
   def new
     @profile = Profile.new
   end

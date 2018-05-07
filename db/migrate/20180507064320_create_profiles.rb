@@ -19,11 +19,11 @@ class CreateProfiles < ActiveRecord::Migration[5.1]
       t.string :addr_postcode
       t.string :addr_country_code
       t.string passport_number
-      t.date :passport_expiry
+      t.date :passport_expiry_date
       t.string :passport_country_code
       t.text :passport_image_data
       t.string :drivers_license_number
-      t.date :drivers_license_expiry
+      t.date :drivers_license_expiry_date
       t.string :drivers_license_country_code
       t.text :drivers_license_image_data
       t.boolean :verified?
