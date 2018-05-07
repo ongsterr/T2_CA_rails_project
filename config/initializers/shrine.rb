@@ -12,6 +12,12 @@ Shrine.storages = {
     store: Shrine::Storage::S3.new(**s3_options),
 }
 
+# URL options for CloudFront CDN
+url_options = {
+  public: true,
+  host: ENV.fetch('AWS_HOST')
+}
+
 # Clearing cache in S3 storage
 s3 = Shrine.storages[:cache]
 s3.clear! { |object| object.last_modified < Time.now - 4*7*24*60*60 } # delete files older than 4 week

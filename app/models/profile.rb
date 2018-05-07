@@ -1,7 +1,9 @@
 class Profile < ApplicationRecord
   belongs_to :user
 
-  # include ImageUploader[:profile_image, :passport_image, :drivers_license_image] # part of Shrine setup
+  include ImageUploader[:profile_image]
+  include ImageUploader[:passport_image] 
+  include ImageUploader[:drivers_license_image] # part of Shrine setup
 
   def location
       "#{addr_city}, #{addr_state}, #{addr_country_name}"
