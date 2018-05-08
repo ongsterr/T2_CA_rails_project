@@ -1,0 +1,110 @@
+
+<%= form_with(model: profile, url: profile_path, local: true) do |f| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :profile_image, "Update Profile Photo" %> <br>
+    <% f.hidden_field :profile_image, value: profile.cached_profile_image_data %>
+    <%= f.file_field :profile_image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name, "First Name" %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name, "Last Name" %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_of_birth, "Birth Date" %>
+    <%= f.date_field :date_of_birth %>
+  </div>
+
+  <div class="field">
+    <%= f.label :mobile_phone, "Phone Number" %>
+    <%= f.telephone_field :mobile_phone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address, "Address" %>
+    <%= f.text_field :addr_unit_number, placeholder: "Unit Number" %>
+    <%= f.text_field :addr_street_number, placeholder: "Street Number" %>
+    <%= f.text_field :addr_street_name, placeholder: "Street Name" %>
+    <%= f.text_field :addr_city, placeholder: "City" %>
+    <%= f.text_field :addr_state, placeholder: "State" %>
+    <%= f.text_field :addr_postcode, placeholder: "Postcode" %>
+    <%= f.country_select :addr_country_code, placeholder: "Country", priority_countries: ["AU", "NZ", "US"] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :about_me, "ABOUT ME" %> <br>
+    <%= f.text_area :about_me, placeholder: "Something about yourself" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :languages, "I SPEAK" %> <br>
+    <%= f.text_field :language_1, placeholder: "Language #1" %>
+    <%= f.text_field :language_2, placeholder: "Language #2" %>
+    <%= f.text_field :language_3, placeholder: "Language #3" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :passport_number, "Passport Number" %>
+    <%= f.text_field :passport_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :passport_expiry_date, "Passport Expiry Date" %>
+    <%= f.date_field :passport_expiry_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :passport_country, "Passport Country" %>
+    <%= f.country_select :passport_country_code, priority_countries: ["AU", "NZ", "US"] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :passport_image, "Add copy of passport id" %> <br>
+    <% f.hidden_field :passport_image, value: profile.cached_passport_image_data %>
+    <%= f.file_field :passport_image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :drivers_license_number, "Drivers License Number" %>
+    <%= f.text_field :drivers_license_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :drivers_license_expiry_date, "Drivers License Expiry Date" %>
+    <%= f.date_field :drivers_license_expiry_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :drivers_license_country, "Drivers License Country" %>
+    <%= f.country_select :drivers_license_country_code, priority_countries: ["AU", "NZ", "US"] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :drivers_license_image, "Add copy of drivers license" %> <br>
+    <% f.hidden_field :drivers_license_image, value: profile.cached_drivers_license_image_data %> <!-- Might not need to have this hidden field -->
+    <%= f.file_field :drivers_license_image %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+<% end %>

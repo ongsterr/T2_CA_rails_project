@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get 'profile/show', to: 'profiles#show'
   get 'profiles', to: 'profiles#index'
   get 'profile/edit', to: 'profiles#edit'
-  patch 'profile/edit', to: 'profiles#update' 
+  patch 'profile', to: 'profiles#update' 
   delete 'profile', to: 'profiles#destroy'
 
   # Products controller

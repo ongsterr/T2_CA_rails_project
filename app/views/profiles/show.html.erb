@@ -3,21 +3,21 @@
 <p>Find me in app/views/profiles/show.html.erb</p>
 
 <!-- Just for testing -->
-<p><%= image_tag @profile.profile_image_url %></p>
+<p><%= image_tag @profile.profile_image_url(:medium) %></p>
 <p><%= @profile.first_name %></p>
 <p><%= @profile.last_name %></p>
-<p><%= l @profile.date_of_birth %></p>
+<p><%= @profile.date_of_birth %></p>
 <p><%= @profile.mobile_phone %></p>
 <p><%= @profile.profile_image_data %></p>
 <p><%= @profile.about_me %></p>
 <p><%= @profile.spoken_language %></p>
 <p><%= @profile.location %></p>
 <p><%= @profile.addr_country_name %></p>
-<p><%= image_tag @profile.passport_image_url %></p>
+<p><%= image_tag @profile.passport_image_url(:medium) %></p>
 <p><%= @profile.passport_number %></p>
-<p><%= l @profile.passport_expiry_date %></p>
+<p><%= @profile.passport_expiry_date %></p>
 <p><%= @profile.passport_country_name %></p>
 <p><%= @profile.passport_image_data %></p>
-<p><%= image_tag @profile.drivers_license_image_url %></p>
+<p><%= image_tag @profile.drivers_license_image_url(:medium) %></p>
 
 <p><%= @reviews.review %></p> <!-- Note: When accessing a join table, records exists in an array, so you need to select the record in an array first before you can access the database -->
