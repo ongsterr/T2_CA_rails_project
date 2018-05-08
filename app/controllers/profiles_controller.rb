@@ -5,11 +5,13 @@ class ProfilesController < ApplicationController
   # Technically, I don't need the action "New" because my edit view = new view
   def new
     @profile = Profile.new
+    authorize @profile 
   end
 
   def create
     @profile = Profile.new(profile_params)
     @profile.user = current_user
+    authorize @profile
 
     if @profile.save
         flash[:notice] = 'Profile created!'
@@ -25,6 +27,7 @@ class ProfilesController < ApplicationController
 
   def index
     @profiles = Profile.all
+    authorize @profiles
   end
 
   def edit
@@ -48,6 +51,7 @@ class ProfilesController < ApplicationController
   private
     def set_profile
         @profile = current_user.profile
+        authorize @profile
         @reviews = Review.find_by(reviewed_id: current_user)
     end
 

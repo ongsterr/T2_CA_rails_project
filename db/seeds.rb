@@ -121,7 +121,7 @@ location = [
 test_review = {
     booking_id: "1",
     reviewer_id: "1",
-    reviewed_id: "1",
+    reviewed_id: "2",
     review: "Chris has been super good!",
     rating: 4
 }
