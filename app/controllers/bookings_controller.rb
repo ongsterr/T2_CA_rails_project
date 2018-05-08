@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @bookings = Booking.all
+    @bookings = Booking.find_by(traveler: current_user)
   end
 
   def edit

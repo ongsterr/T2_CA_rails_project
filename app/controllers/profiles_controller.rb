@@ -48,7 +48,7 @@ class ProfilesController < ApplicationController
   private
     def set_profile
         @profile = current_user.profile
-        @reviews = current_user.reviews
+        @reviews = Review.find_by(reviewed_id: current_user)
     end
 
     def profile_params
