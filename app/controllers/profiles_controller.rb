@@ -48,6 +48,7 @@ class ProfilesController < ApplicationController
   private
     def set_profile
         @profile = current_user.profile
+        @reviews = current_user.reviews
     end
 
     def profile_params

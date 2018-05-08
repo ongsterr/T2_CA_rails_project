@@ -6,6 +6,8 @@ class User < ApplicationRecord
     has_many :products, foreign_key: :transporter_id
     has_many :bookings, foreign_key: :transporter_id
     has_many :bookings, foreign_key: :traveler_id
+    has_many :reviews, foreign_key: :reviewer_id
+    has_many :reviews, foreign_key: :reviewed_id
     
     def self.from_omniauth(access_token)
         data = access_token.info

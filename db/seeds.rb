@@ -56,7 +56,7 @@ admin_profile = {
 
 test_product = {
     transporter_id: "1",
-    price_per_day: 200.00,
+    price_per_day: 20000,
     vehicle_model: "Honda Jazz",
     vehicle_capacity: 5,
     vehicle_description: "Super spacious and comfortable!",
@@ -118,8 +118,17 @@ location = [
     }
 ]
 
+test_review = {
+    booking_id: "1",
+    reviewer_id: "1",
+    reviewed_id: "1",
+    review: "Chris has been super good!",
+    rating: 4
+}
+
 User.create!(admin_user) {p "Admin user created"}
 Profile.create!(admin_profile) {p "Admin profile created"}
 Location.create!(location) {p "Product location seeded"}
 Product.create!(test_product) {p "Product created"}
 Booking.create!(test_booking) {p "Booking completed"}
+Review.create!(test_review) {p "Test review created"}

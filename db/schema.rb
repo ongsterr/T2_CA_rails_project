@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507145532) do
+ActiveRecord::Schema.define(version: 20180508012259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,19 @@ ActiveRecord::Schema.define(version: 20180507145532) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "booking_id"
+    t.bigint "reviewer_id"
+    t.bigint "reviewed_id"
+    t.text "review"
+    t.decimal "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_reviews_on_booking_id"
+    t.index ["reviewed_id"], name: "index_reviews_on_reviewed_id"
+    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -118,4 +131,7 @@ ActiveRecord::Schema.define(version: 20180507145532) do
   add_foreign_key "products", "locations"
   add_foreign_key "products", "users", column: "transporter_id"
   add_foreign_key "profiles", "users"
+  add_foreign_key "reviews", "bookings"
+  add_foreign_key "reviews", "users", column: "reviewed_id"
+  add_foreign_key "reviews", "users", column: "reviewer_id"
 end
