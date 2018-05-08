@@ -12,6 +12,12 @@
     </div>
   <% end %>
 
+  <%- if profile.profile_image_data != nil %>
+    <div class="field">
+        <%= image_tag profile.profile_image_url(:medium) %>
+    </div>
+  <%- end %>  
+  
   <div class="field">
     <%= f.label :profile_image, "Update Profile Photo" %> <br>
     <% f.hidden_field :profile_image, value: profile.cached_profile_image_data %>
@@ -75,6 +81,12 @@
     <%= f.label :passport_country, "Passport Country" %>
     <%= f.country_select :passport_country_code, priority_countries: ["AU", "NZ", "US"] %>
   </div>
+
+  <%- if profile.profile_image_data != nil %>
+    <div class="field">
+        <%= image_tag profile.profile_image_url(:medium) %>
+    </div>
+  <%- end %> 
 
   <div class="field">
     <%= f.label :passport_image, "Add copy of passport id" %> <br>

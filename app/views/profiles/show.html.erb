@@ -20,4 +20,8 @@
 <p><%= @profile.passport_image_data %></p>
 <p><%= image_tag @profile.drivers_license_image_url(:medium) %></p>
 
-<p><%= @reviews.review %></p> <!-- Note: When accessing a join table, records exists in an array, so you need to select the record in an array first before you can access the database -->
+<p>
+    <% if @reviews != nil %>
+        <%= @reviews.review %>
+    <% end %>
+</p> <!-- Note: When accessing a join table, records exists in an array, so you need to select the record in an array first before you can access the database -->

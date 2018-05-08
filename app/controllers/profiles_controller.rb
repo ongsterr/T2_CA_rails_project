@@ -3,10 +3,6 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   # Technically, I don't need the action "New" because my edit view = new view
-  def new
-    @profile = Profile.new
-    authorize @profile 
-  end
 
   def create
     @profile = Profile.new(profile_params)
