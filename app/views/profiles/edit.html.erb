@@ -1,5 +1,5 @@
-<h1>Profile Edit Page</h1>
-<p>Technically this should be the similar as Profile Registration Page</p>
-<p>Find me in app/views/profiles/edit.html.erb</p>
+<h1>
+    Profile <%= @profile == nil ? "Signup" : "Update" %> Page
+</h1>
 
 <%= render 'form', profile: @profile, image_size: :medium %>

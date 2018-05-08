@@ -51,6 +51,6 @@ class ProfilesController < ApplicationController
     end
 
     def profile_params
-        params.require(:profile).permit(:first_name, :last_name, :date_of_birth, :mobile_phone, :about_me, :language_1, :language_2, :language_3, :profile_image, :addr_unit_number, :addr_street_number, :addr_street_name, :addr_city, :addr_state, :addr_postcode, :addr_country_code, :passport_number, :passport_expiry, :passport_country_code, :passport_image, :drivers_license_number, :drivers_license_expiry, :drivers_license_country_code, :drivers_license_image)
+        params.require(:profile).permit(:first_name, :last_name, :date_of_birth, :mobile_phone, :about_me, :language_1, :language_2, :language_3, :profile_image, :addr_unit_number, :addr_street_number, :addr_street_name, :addr_city, :addr_state, :addr_postcode, :addr_country_code, :passport_number, :passport_expiry_date, :passport_country_code, :passport_image, :drivers_license_number, :drivers_license_expiry_date, :drivers_license_country_code, :drivers_license_image)
     end
 end

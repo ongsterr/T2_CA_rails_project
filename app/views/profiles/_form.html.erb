@@ -69,17 +69,9 @@
   
   <% if profile.user.role == "Transporter" %>
     <div class="field">
-        <%= f.label :passport_number, "Passport Number" %>
-        <%= f.text_field :passport_number %>
-    </div>
-
-    <div class="field">
-        <%= f.label :passport_expiry_date, "Passport Expiry Date" %>
-        <%= f.date_field :passport_expiry_date %>
-    </div>
-
-    <div class="field">
-        <%= f.label :passport_country, "Passport Country" %>
+        <%= f.label :passport_number, "Passport Info" %> <br>
+        <%= f.text_field :passport_number, placeholder: "Passport Number" %> <br>
+        <%= f.date_field :passport_expiry_date, placeholder: "Passport Expiry Date" %> <br>
         <%= f.country_select :passport_country_code, priority_countries: ["AU", "NZ", "US"] %>
     </div>
 
@@ -96,17 +88,9 @@
     </div>
 
     <div class="field">
-        <%= f.label :drivers_license_number, "Drivers License Number" %>
-        <%= f.text_field :drivers_license_number %>
-    </div>
-
-    <div class="field">
-        <%= f.label :drivers_license_expiry_date, "Drivers License Expiry Date" %>
-        <%= f.date_field :drivers_license_expiry_date %>
-    </div>
-
-    <div class="field">
-        <%= f.label :drivers_license_country, "Drivers License Country" %>
+        <%= f.label :drivers_license_number, "Drivers License Info" %> <br>
+        <%= f.text_field :drivers_license_number, placeholder: "Drivers License Number" %> <br>
+        <%= f.date_field :drivers_license_expiry_date, placeholder: "Drivers License Expiry Date" %> <br>
         <%= f.country_select :drivers_license_country_code, priority_countries: ["AU", "NZ", "US"] %>
     </div>
 
@@ -124,7 +108,11 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit %>
+    <% if profile == nil %>
+        <%= f.submit "Signup!" %>
+    <% else %>
+        <%= f.submit "Update!" %>
+    <% end %>
   </div>
   
 <% end %>
