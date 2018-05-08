@@ -67,7 +67,7 @@
     <%= f.text_field :language_3, placeholder: "Language #3" %>
   </div>
   
-  <% if profile.user.role == "3" %>
+  <% if profile.user.role == "Transporter" %>
     <div class="field">
         <%= f.label :passport_number, "Passport Number" %>
         <%= f.text_field :passport_number %>
