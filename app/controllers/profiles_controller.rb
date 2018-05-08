@@ -1,8 +1,14 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_profile, only: [:show, :update, :destroy]
 
   # Technically, I don't need the action "New" because my edit view = new view
+  def new
+    @profile = Profile.new
+    if current_user.profile != nil?
+        redirect_to profile_edit_path
+    end
+  end
 
   def create
     @profile = Profile.new(profile_params)

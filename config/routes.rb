@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'pages/contact'
   
   # Profiles controller
-  get 'sign_up/profile', to: 'profiles#edit'
+  get 'sign_up/profile', to: 'profiles#new'
   post 'profile', to: 'profiles#create'
   get 'profile/show', to: 'profiles#show'
   get 'profiles', to: 'profiles#index'
