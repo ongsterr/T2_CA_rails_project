@@ -8,7 +8,8 @@ end
 # Custom gems
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem "pundit", '~> 1.1'
-gem 'bootstrap', '~> 4.1.0'
+# gem 'bootstrap', '~> 4.1.0'
+gem 'semantic-ui-sass'
 gem 'jquery-rails'
 gem 'shrine', '~> 2.10', '>= 2.10.1'
 gem "image_processing", "~> 1.2"

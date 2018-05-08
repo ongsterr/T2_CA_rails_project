@@ -41,8 +41,6 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
-    autoprefixer-rails (8.4.1)
-      execjs
     aws-partitions (1.83.0)
     aws-sdk-core (3.20.2)
       aws-partitions (~> 1.0)
@@ -58,10 +56,6 @@ GEM
     aws-sigv4 (1.0.2)
     bcrypt (3.1.11)
     bindex (0.5.0)
-    bootstrap (4.1.1)
-      autoprefixer-rails (>= 6.0.3)
-      popper_js (>= 1.12.9, < 2)
-      sass (>= 3.5.2)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (2.18.0)
@@ -178,7 +172,6 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     pg (1.0.0)
-    popper_js (1.12.9)
     public_suffix (3.0.2)
     puma (3.11.4)
     pundit (1.1.0)
@@ -255,6 +248,8 @@ GEM
     selenium-webdriver (3.11.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    semantic-ui-sass (2.3.1.2)
+      sass (>= 3.2)
     shrine (2.11.0)
       down (~> 4.1)
     sixarm_ruby_unaccent (1.2.0)
@@ -304,7 +299,6 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk-s3
-  bootstrap (~> 4.1.0)
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
@@ -326,6 +320,7 @@ DEPENDENCIES
   rspec-rails (~> 3.7)
   sass-rails (~> 5.0)
   selenium-webdriver
+  semantic-ui-sass
   shrine (~> 2.10, >= 2.10.1)
   spring
   spring-watcher-listen (~> 2.0.0)
