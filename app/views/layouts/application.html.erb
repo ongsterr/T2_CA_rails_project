@@ -9,7 +9,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Karla|Ubuntu|Lato|Mina|Montserrat" rel="stylesheet">
   </head>
-
+ 
   <body>
     <header>
       <div class="ui two column centered grid container">
@@ -18,9 +18,13 @@
         <p class="alert"><%= alert %></p>
       </div>
     </header>
-    <%= yield %>
+
+    <section class="ui centered grid container main">
+      <%= yield %>
+    </section>
+
     <footer>
-      
+      <%= render 'layouts/footer' %>
     </footer>
   </body>
 </html>

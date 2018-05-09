@@ -22,12 +22,43 @@
     padding-bottom: 3px;
 }
 
-header, body {
+body {
     min-width: 400px;
+}
+
+.column {
+    width: 450px;
 }
 
 .ui.grid.container {
     margin: -20px 0;
+}
+
+// Styling login page
+.ui.input {
+    width: 100%;
+    margin-bottom: -2px;
+}
+
+.ui.message {
+    text-align: left;
+    a {
+        color: rgba(0, 0, 0, 0.87);
+    }
+}
+
+.ui.stacked.segment {
+    width: 100%;
+    padding: 40px 60px;
+    border: 0.5px solid #222222;
+}
+
+.ui.stacked.segment:after {
+    display: none;
+}
+
+.login_header {
+    border: none;
 }
 
 .item.logo img {
@@ -42,3 +73,13 @@ header, body {
     padding: 10px 5px !important;
 }
 
+.car_logo {
+    margin: 100px 50px -81px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ui.footer.segment {
+    margin: 80px 0 0;
+    padding: 80px 0;
+  }
