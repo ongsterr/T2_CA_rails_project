@@ -30,6 +30,14 @@ body {
     width: 450px;
 }
 
+.column.nav {
+    padding-bottom: 0 !important;
+}
+
+.ui.centered.grid.nav {
+    margin-bottom: -70px;
+}
+
 .ui.grid.container {
     margin: -20px 0;
 }

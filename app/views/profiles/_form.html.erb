@@ -12,20 +12,18 @@
       </div>
     <% end %>
 
-    <div class="ui segment">
-      <h3 class="ui dividing header">Profile Photo</h3>
-      <%- if profile.profile_image_data != nil %>
-        <%= image_tag profile.profile_image_url(image_size), class: "ui small circular image centered" %>
-      <%- end %> <br>
-      
-      <div class="field">
-        <%= f.label :profile_image, "Update Profile Photo", class: "ui huge button" do %>
-          <i class="ui upload icon"></i>
-          Upload Profile Photo
-        <% end %>
-          <% f.hidden_field :profile_image, value: profile.cached_profile_image_data %>
-          <%= f.file_field :profile_image, id: "profile_profile_image", class: "redundant_file_field" %>
-      </div>
+    <h3 class="ui dividing header">Profile Photo</h3>
+    <%- if profile.profile_image_data != nil %>
+      <%= image_tag profile.profile_image_url(image_size), class: "ui small circular image centered" %>
+    <%- end %> <br>
+    
+    <div class="field">
+      <%= f.label :profile_image, "Update Profile Photo", class: "ui huge button" do %>
+        <i class="ui upload icon"></i>
+        Upload Profile Photo
+      <% end %>
+        <% f.hidden_field :profile_image, value: profile.cached_profile_image_data %>
+        <%= f.file_field :profile_image, id: "profile_profile_image", class: "redundant_file_field" %>
     </div>
 
     <section class="ui segment">

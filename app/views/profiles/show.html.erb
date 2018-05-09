@@ -1,27 +1,70 @@
-<h1>Profile Display Page</h1>
-<p>This is the page rendered when you click on a user</p>
-<p>Find me in app/views/profiles/show.html.erb</p>
 
-<!-- Just for testing -->
-<p><%= image_tag @profile.profile_image_url(:medium) %></p>
-<p><%= @profile.first_name %></p>
-<p><%= @profile.last_name %></p>
-<p><%= @profile.date_of_birth %></p>
-<p><%= @profile.mobile_phone %></p>
-<p><%= @profile.profile_image_data %></p>
-<p><%= @profile.about_me %></p>
-<p><%= @profile.spoken_language %></p>
-<p><%= @profile.location %></p>
-<p><%= @profile.addr_country_name %></p>
-<p><%= image_tag @profile.passport_image_url(:medium) %></p>
-<p><%= @profile.passport_number %></p>
-<p><%= @profile.passport_expiry_date %></p>
-<p><%= @profile.passport_country_name %></p>
-<p><%= @profile.passport_image_data %></p>
-<p><%= image_tag @profile.drivers_license_image_url(:medium) %></p>
+<section class="ui grid">
+    <div class="column row">
+        <div class="column profile">
+            <!-- Just for testing -->
+            <div class="image_profile">
+                <%= image_tag @profile.profile_image_url(:medium), class: "ui small circular image centered" %>
+            </div>
+            <h4 class="ui dividing header profile">
+                <div class="profile_title">
+                    HELLO, I'M <%= @profile.first_name.upcase %> <br>
+                    <div class="location"><%= @profile.location %></div>
+                </div>
+            </h4>
+            <div class="ui left aligned container about">
+                <h3 class="ui header">
+                    <i class="thumbs up outline icon"></i>
+                    <div class="content">
+                        ABOUT ME
+                    </div>
+                </h3>
+                <div class="about_me">
+                    "<%= @profile.about_me %>"
+                </div>
+            </div>
+            <div class="ui left aligned container language">
+                <h3 class="ui header">
+                    <i class="comments icon"></i>
+                    <div class="content">
+                        I SPEAK
+                    </div>
+                </h3>
+                <div class="language_spoken">
+                    "<%= @profile.spoken_language %>"
+                </div>
+            </div>
+            
+            <h4 class="ui dividing header profile">
+                <div class="profile_title">
+                    My Reviews
+                </div>
+            </h4>
 
-<p>
-    <% if @reviews != nil %>
-        <%= @reviews.review %>
-    <% end %>
-</p> <!-- Note: When accessing a join table, records exists in an array, so you need to select the record in an array first before you can access the database -->
+            <div class="ui card">
+                <div class="content">
+                    <div class="header left aligned"><%= @reviews.reviewer.profile.first_name %></div>
+                    <div class="meta">
+                        <div class="right floated time">2 days ago</div>
+                        <div class="category left aligned"><%= @reviews.reviewer.profile.location %></div>
+                    </div>
+                    <div class="description left aligned">
+                        <p><%= @reviews.review %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="ui card">
+                <div class="content">
+                    <div class="header left aligned"><%= @reviews.reviewer.profile.full_name %></div>
+                    <div class="meta">
+                        <div class="right floated time"><%= time_ago_in_words(@reviews.updated_at).pluralize %> ago</div>
+                        <div class="category left aligned"><%= @reviews.reviewer.profile.location %></div>
+                    </div>
+                    <div class="description left aligned">
+                        <p class="review">"<%= @reviews.review %>"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

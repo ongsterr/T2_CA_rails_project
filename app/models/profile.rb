@@ -5,6 +5,10 @@ class Profile < ApplicationRecord
   include ImageUploader[:passport_image] 
   include ImageUploader[:drivers_license_image] # part of Shrine setup
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+  
   def location
       "#{addr_city}, #{addr_state}, #{addr_country_name}"
   end

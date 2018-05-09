@@ -18,3 +18,32 @@
 #profile_profile_image, #profile_passport_image, #profile_drivers_license_image {
     border: none;
 }
+
+.ui.dividing.header.profile {
+	text-align: left;
+	border-bottom: 1.5px solid #222222;
+	.profile_title {
+		padding-bottom: 8px;
+		.location {
+			text-indent: 15px;
+		}
+	}
+}
+
+.container.about, .container.language {
+	height: 120px;
+}
+
+.language_spoken, .about_me {
+		text-indent: 40px;
+}
+
+.ui.card {
+	width: 100% !important;
+	border: 0.5px solid #22222234 !important;
+	padding: 10px !important;
+}
+
+p.review {
+	text-indent: 15px;
+}
