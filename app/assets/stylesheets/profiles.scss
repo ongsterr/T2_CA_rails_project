@@ -6,144 +6,15 @@
 //     display: flex;
 // }
 
-.profile_form {
-    margin: 25px auto;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas: 
-        "pimage"
-        "pname"
-        "contact"
-        "address"
-        "about"
-        "passport"
-        "license"
-        "submit";
-    grid-row-gap: 15px;
-    justify-content: center;
-}
-
-.profile {
-    display: flex;
-    flex-flow: row wrap;
-}
-
-.profile_image {
-    grid-area: pimage;
-    justify-self: end;
-}
-
-.profile_image img {
-    border-radius: 100%;
-    width: 110px;
-    height: 110px;
-}
-
-.profile_image .image {
-    width: 100%;
-    justify-self: end;
-}
-
-.profile_name {
-    grid-area: pname;
-}
-
-.profile_contact {
-    grid-area: contact;
-}
-
-.profile_address {
-    grid-area: address;
-}
-
-.profile_about {
-    grid-area: about;
-}
-
-.profile_passport {
-    grid-area: passport;
-}
-
-.profile_license {
-    grid-area: license;
-}
-
-.profile_submit {
-    grid-area: submit;
-}
-
-.profile_field {
-    margin: 10px 10px;
-}
-
-.profile_field .label {
-    font-family: 'Lato', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-input[type=text], input[type=date], input[type=tel], textarea, select {
-    width: 250px;
-    padding: 10px 10px;
-    margin: -1px 0 0 0;
-    box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
-    font-size: 14px;
-}
-
-// input[type=text].street_name {
-//     width: 515px;
-// }
-
-// input[type=text].address, .profile_address select {
-//     width: 258px;
-// }
-
-input[type=date] {
-    padding: 8px 10px;
-}
-
-.passport_label, .license_label {
-    width: 228px;
-    padding: 10px 10px;
-    margin: -1px 0 0 0;
-    border: 1px solid grey;
-    font-family: 'Lato', sans-serif;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.passport_text, .license_text {
-    cursor: pointer;
-}
-
-.passport_label::after, .license_label::after {
-        content: "+";
-        font-size: 16px;
-        font-weight: 800;
-        text-align: right;
-    float:right
-}
-
-.passport_label:hover, .license_label:hover {
-    background: #d3d3d3;
-    transform: translateX(1px)
-}
-
 .redundant_file_field {
     width: 0.1px;
 	height: 0.1px;
 	opacity: 0;
-    overflow: hidden;
-    position: absolute;
+	overflow: hidden;
+	position: absolute;
 	z-index: -1;
 }
 
-textarea {
-    height: 150px;
-}
-
-.image_data {
-    width: 200px;
+#profile_profile_image, #profile_passport_image, #profile_drivers_license_image {
+    border: none;
 }

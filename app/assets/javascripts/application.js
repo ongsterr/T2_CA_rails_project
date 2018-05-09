@@ -12,6 +12,8 @@
 //
 // Loads all Semantic javascripts
 //= require semantic-ui
+//= require jquery
+//= require jquery_ujs
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .

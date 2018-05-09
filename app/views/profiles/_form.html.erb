@@ -1,5 +1,5 @@
-<div class = "profile_form">
-  <%= form_with(model: profile, url: profile_path, local: true, class: "profile_form") do |f| %>
+<section class = "ui grid container">
+  <%= form_with(model: profile, url: profile_path, local: true, class: "ui form column") do |f| %>
     <% if profile.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
@@ -12,137 +12,165 @@
       </div>
     <% end %>
 
-    <div class="profile_image profile">
+    <div class="ui segment">
+      <h3 class="ui dividing header">Profile Photo</h3>
       <%- if profile.profile_image_data != nil %>
-        <div class="profile_field image">
-            <%= image_tag profile.profile_image_url(image_size) %>
-        </div>
-      <%- end %>
+        <%= image_tag profile.profile_image_url(image_size), class: "ui small circular image centered" %>
+      <%- end %> <br>
       
-      <div class="profile_field">
-        <div class="label">
-          <%= f.label :profile_image, "Update Profile Photo" %>
-        </div>
-          <br>
-        <% f.hidden_field :profile_image, value: profile.cached_profile_image_data %>
-        <%= f.file_field :profile_image %>
+      <div class="field">
+        <%= f.label :profile_image, "Update Profile Photo", class: "ui huge button" do %>
+          <i class="ui upload icon"></i>
+          Upload Profile Photo
+        <% end %>
+          <% f.hidden_field :profile_image, value: profile.cached_profile_image_data %>
+          <%= f.file_field :profile_image, id: "profile_profile_image", class: "redundant_file_field" %>
       </div>
     </div>
 
-    <div class="profile_name profile">
-      <div class="profile_field">
-        <div class="label">
-          <%= f.label :first_name, "First Name" %>
-        </div> 
-          <br>
-        <%= f.text_field :first_name %>
-      </div>
-
-      <div class="profile_field">
-        <div class="label">
-          <%= f.label :last_name, "Last Name" %>
+    <section class="ui segment">
+      <div class="profile_name">
+        <h3 class="ui dividing header">Basic Info</h3>
+        <div class="field">
+          <%= f.label :name, "Name" %>
+          <div class="two fields">
+            <div class="field">
+              <%= f.text_field :first_name, placeholder: "First Name" %>
+            </div>
+            <div class="field">
+              <%= f.text_field :last_name, placeholder: "Last Name" %>
+            </div>
+          </div>
         </div>
-          <br>
-        <%= f.text_field :last_name %>
-      </div>
-    </div>
 
-    <div class="profile_contact profile">
-      <div class="profile_field">
-        <div class="label">
-          <%= f.label :date_of_birth, "Birth Date" %>
-        </div>
-          <br>
-        <%= f.date_field :date_of_birth %>
-      </div>
-
-      <div class="profile_field">
-        <div class="label">
-          <%= f.label :mobile_phone, "Phone Number" %>
-        </div>
-          <br>
-        <%= f.telephone_field :mobile_phone %>
-      </div>
-    </div>
-    
-    <div class="profile_address">
-      <div class="profile_field">
-        <div class="label">
+      <div class="profile_contact">
+        <div class="fields">
+          <div class="eight wide field">
+            <%= f.label :date_of_birth, "Birth Date" %>
+            <%= f.date_field :date_of_birth %>
+          </div>
+          <div class="eight wide field">
+            <%= f.label :mobile_phone, "Phone Number" %>
+            <%= f.telephone_field :mobile_phone %>
+          </div>
+        </div>      
+        
+        <div class="field">
           <%= f.label :address, "Address" %>
+          <div class="two fields">
+            <div class="field">
+              <%= f.text_field :addr_unit_number, placeholder: "Unit Number", class: "address" %>
+            </div>
+            <div class="field">
+              <%= f.text_field :addr_street_number, placeholder: "Street Number", class: "address" %>
+            </div>
+          </div>
+          <div class="field">
+            <%= f.text_field :addr_street_name, placeholder: "Street Name", class: "street_name" %>
+          </div>
+          <div class="two fields">
+            <div class="field">
+              <%= f.text_field :addr_city, placeholder: "City", class: "address" %>
+            </div>
+            <div class="field">
+              <%= f.text_field :addr_state, placeholder: "State", class: "address" %>
+            </div>
+          </div>
+          <div class="two fields">
+            <div class="field">
+              <%= f.text_field :addr_postcode, placeholder: "Postcode", class: "address" %>
+            </div>
+            <div class="field">
+              <%= f.country_select :addr_country_code, placeholder: "Country", priority_countries: ["AU", "NZ", "US"] %>
+            </div>
+          </div>
         </div>
-          <br>
-        <%= f.text_field :addr_unit_number, placeholder: "Unit Number", class: "address" %>
-        <%= f.text_field :addr_street_number, placeholder: "Street Number", class: "address" %> <br>
-        <%= f.text_field :addr_street_name, placeholder: "Street Name", class: "street_name" %> <br>
-        <%= f.text_field :addr_city, placeholder: "City", class: "address" %>
-        <%= f.text_field :addr_state, placeholder: "State", class: "address" %> <br>
-        <%= f.text_field :addr_postcode, placeholder: "Postcode", class: "address" %>
-        <%= f.country_select :addr_country_code, placeholder: "Country", priority_countries: ["AU", "NZ", "US"] %>
       </div>
-    </div>
 
-    <div class="profile_about profile">
-      <div class="profile_field">
-        <div class="label">
-          <%= f.label :about_me, "ABOUT ME" %>
+      <div class="profile_about">
+        <div class="field">
+          <%= f.label :about_me, "About Me" %>
+          <%= f.text_area :about_me, placeholder: "Something about yourself" %>
         </div>
-          <br>
-        <%= f.text_area :about_me, placeholder: "Something about yourself" %>
-      </div>
-      
-      <div class="profile_field">
-        <div class="label">
-          <%= f.label :languages, "I SPEAK" %>
+        
+        <div class="field">
+          <%= f.label :languages, "Language/s I Speak" %>
+          <div class="three fields">
+            <div class="field">
+              <%= f.text_field :language_1, placeholder: "Language #1" %>
+            </div>
+            <div class="field">
+              <%= f.text_field :language_2, placeholder: "Language #2" %>
+            </div>
+            <div class="field">
+              <%= f.text_field :language_3, placeholder: "Language #3" %>
+            </div>
+          </div>
         </div>
-          <br>
-        <%= f.text_field :language_1, placeholder: "Language #1" %> <br>
-        <%= f.text_field :language_2, placeholder: "Language #2" %> <br>
-        <%= f.text_field :language_3, placeholder: "Language #3" %>
       </div>
-    </div>
+    </section>
     
     <% if profile.user.role == "Transporter" %>
-      <div class="profile_passport profile">
-        <div class="profile_field">
-            <div class="label">
+      <section class="ui segment">
+        <div class="profile_passport">
+          <h3 class="ui dividing header">Verification Information</h3>
+          <div class="field">
               <%= f.label :passport_number, "Passport Info" %>
-            </div>
-              <br>
-            <%= f.text_field :passport_number, placeholder: "Passport Number" %> <br>
-            <%= f.date_field :passport_expiry_date, placeholder: "Passport Expiry Date" %> <br>
-            <%= f.country_select :passport_country_code, priority_countries: ["AU", "NZ", "US"] %>
-            <div class="passport_label">
-              <%= f.label :passport_image, "Attach Passport", class: "passport_text" %>
-            </div>
-              <br>
-            <% f.hidden_field :passport_image, value: profile.cached_passport_image_data %>
-            <%= f.file_field :passport_image, id: "profile_passport_image", class: "redundant_file_field" %>
+              <div class="three fields">
+                <div class="field">
+                  <%= f.text_field :passport_number, placeholder: "Passport Number" %>
+                </div>
+                <div class="field">
+                  <%= f.date_field :passport_expiry_date, placeholder: "Passport Expiry Date" %>
+                </div>
+                <div class="field">
+                  <%= f.country_select :passport_country_code, priority_countries: ["AU", "NZ", "US"] %>
+                </div>
+              </div>
+              <div class="field">
+                <%= f.label :passport_image, class: "ui huge button" do %>
+                  <i class="ui upload icon"></i>
+                  Upload Passport
+                <% end %>
+                <% f.hidden_field :passport_image, value: profile.cached_passport_image_data %>
+                <%= f.file_field :passport_image, id: "profile_passport_image", class: "redundant_file_field" %>
+              </div>
+          </div>
         </div>
 
-      <div class="profile_license profile">
-        <div class="profile_field">
-          <div class="label">
+        <div class="profile_license">
+          <div class="field">
             <%= f.label :drivers_license_number, "Drivers License Info" %>
+            <div class="three fields">
+              <div class="field">
+                <%= f.text_field :drivers_license_number, placeholder: "Drivers License Number" %>
+              </div>
+              <div class="field">
+                <%= f.date_field :drivers_license_expiry_date, placeholder: "Drivers License Expiry Date" %>
+              </div>
+              <div class="field">
+                <%= f.country_select :drivers_license_country_code, priority_countries: ["AU", "NZ", "US"] %>
+              </div>
+            </div>
+            <div class="field">
+              <%= f.label :drivers_license_image, class: "ui huge button" do %>
+                <i class="ui upload icon"></i>
+                Upload Drivers' License
+              <% end %>
+              <% f.hidden_field :drivers_license_image, value: profile.cached_drivers_license_image_data %> <!-- Might not need to have this hidden profile_field -->
+              <%= f.file_field :drivers_license_image, id: "profile_drivers_license_image", class: "redundant_file_field" %>
+            </div>
           </div>
-            <br>
-          <%= f.text_field :drivers_license_number, placeholder: "Drivers License Number" %> <br>
-          <%= f.date_field :drivers_license_expiry_date, placeholder: "Drivers License Expiry Date" %> <br>
-          <%= f.country_select :drivers_license_country_code, priority_countries: ["AU", "NZ", "US"] %> <br>
-          <div class="license_label">
-            <%= f.label :drivers_license_image, "Attach Drivers' License", class: "license_text" %>
-          </div>
-            <br>
-          <% f.hidden_field :drivers_license_image, value: profile.cached_drivers_license_image_data %> <!-- Might not need to have this hidden profile_field -->
-          <%= f.file_field :drivers_license_image, id: "profile_drivers_license_image", class: "redundant_file_field" %>
         </div>
       </div>
+    </section>
     <% end %>
 
     <div class="profile_submit profile actions">
       <% if profile == nil %>
-          <%= f.submit "Signup!" %>
+          <%= f.submit "Signup Profile", class: "fluid ui secondary large button" %>
       <% else %>
-          <%= f.submit "Update!" %>
+          <%= f.submit "Update Profile", class: "fluid ui secondary large button" %>
       <% end %>
     </div>
     
