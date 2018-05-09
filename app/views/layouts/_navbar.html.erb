@@ -1,0 +1,24 @@
+
+<div class="item logo six wide column">
+    <img src="https://s3-ap-southeast-2.amazonaws.com/railsproject2018/T2_logo.png" alt="T2 logo" width="120" >
+</div>
+
+<div class="ui secondary menu ten wide column">
+    <div class="right menu", id: "navbar">
+        <% if user_signed_in? %>
+            <%= link_to "PROFILE", profile_show_path, class: "item main" %>
+            <%= link_to "MESSAGE", '#', class: "item main" %>
+            <div class="ui simple dropdown item main">
+            ACCOUNT
+                <div class="menu">
+                    <%= link_to "Update Profile", profile_edit_path, class: "item" %>
+                    <%= link_to "Update Account", edit_user_registration_path, class: "item" %>
+                </div>
+            </div>
+        <% else %>
+            <%= link_to "HOME", root_path, class: "item main" %>
+            <%= link_to "SIGNUP", root_path, class: "item main" %>
+            <%= link_to "LOGIN", root_path, class: "item main" %>
+        <% end %>
+    </div>
+</div>

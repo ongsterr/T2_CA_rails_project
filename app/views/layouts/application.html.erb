@@ -10,12 +10,17 @@
     <link href="https://fonts.googleapis.com/css?family=Karla|Ubuntu|Lato|Mina|Montserrat" rel="stylesheet">
   </head>
 
-  <header>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </header>
-
   <body>
+    <header>
+      <div class="ui two column centered grid container">
+        <%= render 'layouts/navbar' %>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+    </header>
     <%= yield %>
+    <footer>
+      
+    </footer>
   </body>
 </html>

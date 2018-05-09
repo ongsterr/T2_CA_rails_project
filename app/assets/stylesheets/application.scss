@@ -13,5 +13,32 @@
  *= require_tree .
  *= require_self
  */
- 
+
 @import "semantic-ui";
+
+.right.menu {
+    border-bottom: 2px solid black;
+    justify-content: flex-end;
+    padding-bottom: 3px;
+}
+
+header, body {
+    min-width: 400px;
+}
+
+.ui.grid.container {
+    margin: -20px 0;
+}
+
+.item.logo img {
+    padding-top: 20px;
+}
+
+.ui.segment {
+    border: 1px solid #222222;
+}
+
+.item.main {
+    padding: 10px 5px !important;
+}
+
