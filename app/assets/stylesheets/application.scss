@@ -34,10 +34,14 @@ body {
     margin: -20px 0;
 }
 
-// Styling login page
+// Styling login page and user registration page
 .ui.input {
-    width: 100%;
+    width: 300px;
     margin-bottom: -2px;
+}
+
+p.text_left, .field.dropdown_label {
+    text-align: left;
 }
 
 .ui.message {
@@ -60,6 +64,12 @@ body {
 .login_header {
     border: none;
 }
+
+.ui.fluid.dropdown {
+    margin-top: 10px;
+}
+
+// End of styling for user login and registration
 
 .item.logo img {
     padding-top: 20px;

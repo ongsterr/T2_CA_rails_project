@@ -1,8 +1,7 @@
 
 <div class="ui middle aligned center aligned grid">
   <div class="column">
-
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "ui large form") do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "ui large form error") do |f| %>
       <div class="ui stacked segment">
         <h2 class="ui header left aligned"> Welcome to T2 ! </h2>
         <div class="field">
@@ -31,8 +30,7 @@
         <div class="ui message field">
           <%= render "devise/shared/links" %>
         </div>
-      <% end %>
-
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
