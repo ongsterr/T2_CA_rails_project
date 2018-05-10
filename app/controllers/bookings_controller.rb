@@ -31,6 +31,7 @@ class BookingsController < ApplicationController
   def confirm
     @booking = Booking.find(session[:booking_id])
     @booking.update(booking_confirmed?: true)
+    BookingMailer.new_booking_notification(@booking).deliver
   end
 
   def index

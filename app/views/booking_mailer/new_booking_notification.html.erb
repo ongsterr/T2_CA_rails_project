@@ -1,0 +1,46 @@
+<section class="ui grid container">
+    <div class="column row">
+        <div class="column">
+            <h2 class="ui dividing header", style="margin-left: 150px;">
+                Booking <%= @booking.booking_confirmed? ? "Confirmation" : "Review" %>
+                <div class="booking_ref"><%= @booking.booking_confirmed? ? "Booking Reference Number: #{@booking.booking_ref_number}" : "" %></div>
+            </h2>
+
+            <div class="ui segment booking_summary">
+                <h3 class="ui header">
+                    <%= @booking.traveler.profile.full_name %> @ <%= @booking.product.location.location %>
+                </h3>
+                <h4 class="ui dividing header">
+                    <%= l @booking.booking_date_from %> @ <%= l @booking.booking_date_to %>
+                </h4>
+
+                <div class="ui segment cost">
+                    <div class="ui grid">
+                        <div class="two column row">
+                            <div class="left floated column">$<%= (@booking.product.price_per_day/100).to_i %> x <%= (@booking.booking_date_to.to_date - @booking.booking_date_from.to_date).to_i %> days</div>
+                            <div class="right floated right aligned column">$<%= (@booking.transporter_cost/100).to_i %></div>
+                        </div>
+                    </div>
+                    <div class="ui grid">
+                        <div class="two column row">
+                            <div class="left floated column">Service Fee</div>
+                            <div class="right floated right aligned column">$<%= (@booking.platform_cost/100).to_i %></div>
+                        </div>
+                    </div>
+                    <div class="ui grid">
+                        <div class="two column row total">
+                            <div class="left floated column">TOTAL (AUD)</div>
+                            <div class="right floated right aligned column">$<%= (@booking.total_cost/100).to_i %></div>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="ui header">
+                    Cancellation Note:
+                </h4>
+                <div>- <%= @booking.product.cancellation_policy %></div>
+            </div>
+
+        </div>
+    </div>
+</section>
