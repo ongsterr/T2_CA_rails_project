@@ -20,6 +20,8 @@ gem 'omniauth-google-oauth2'
 gem 'aws-sdk-s3'
 gem 'fastimage'
 
+gem 'rails_12factor', group: :production # To solve issue with Devise logout with Heroku
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use postgresql as the database for Active Record
