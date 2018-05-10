@@ -165,10 +165,16 @@
     <% end %>
 
     <div class="profile_submit profile actions">
-      <% if profile == nil %>
-          <%= f.submit "Signup Profile", class: "fluid ui secondary large button" %>
+      <% if current_user.role == "Transporter" %>
+        <%= link_to sign_up_product_path do %>
+          <%= f.submit "Next", class: "fluid ui secondary large button" %>
+        <% end %>
       <% else %>
-          <%= f.submit "Update Profile", class: "fluid ui secondary large button" %>
+        <% if profile == nil %>
+            <%= f.submit "Signup Profile", class: "fluid ui secondary large button" %>
+        <% else %>
+            <%= f.submit "Update Profile", class: "fluid ui secondary large button" %>
+        <% end %>
       <% end %>
     </div>
     

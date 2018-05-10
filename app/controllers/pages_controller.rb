@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user! # just for testing Devise
 
   def home
   end
@@ -9,4 +8,5 @@ class PagesController < ApplicationController
 
   def contact
   end
+
 end
