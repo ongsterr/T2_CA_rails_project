@@ -40,30 +40,22 @@
                 </div>
             </h4>
 
-            <div class="ui card profile">
-                <div class="content">
-                    <div class="header left aligned"><%= @reviews.reviewer.profile.full_name %></div>
-                    <div class="meta">
-                        <div class="right floated time"><%= time_ago_in_words(@reviews.updated_at).pluralize %> ago</div>
-                        <div class="category left aligned"><%= @reviews.reviewer.profile.location %></div>
+            <% if @reviews != nil %>
+                <%= @reviews.each do |r| %>
+                    <div class="ui card profile">
+                        <div class="content">
+                            <div class="header left aligned"><%= r.reviewer.profile.full_name %></div>
+                            <div class="meta">
+                                <div class="right floated time"><%= time_ago_in_words(r.updated_at).pluralize %> ago</div>
+                                <div class="category left aligned"><%= r.reviewer.profile.location %></div>
+                            </div>
+                            <div class="description left aligned">
+                                <p class="review">"<%= r.review %>"</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="description left aligned">
-                        <p class="review">"<%= @reviews.review %>"</p>
-                    </div>
-                </div>
-            </div>
-            <div class="ui card profile">
-                <div class="content">
-                    <div class="header left aligned"><%= @reviews.reviewer.profile.full_name %></div>
-                    <div class="meta">
-                        <div class="right floated time"><%= time_ago_in_words(@reviews.updated_at).pluralize %> ago</div>
-                        <div class="category left aligned"><%= @reviews.reviewer.profile.location %></div>
-                    </div>
-                    <div class="description left aligned">
-                        <p class="review">"<%= @reviews.review %>"</p>
-                    </div>
-                </div>
-            </div>
+                <% end %>
+            <% end %>
         </div>
     </div>
 </section>
