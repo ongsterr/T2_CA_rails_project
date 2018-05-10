@@ -1,0 +1,63 @@
+<section class = "ui grid container">
+    <%= form_with(model: product, url: product_path, local: true, class: "ui form column") do |f| %>
+        <% if product.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+                <ul>
+                    <% product.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+    
+        <section class="ui segment left aligned">
+            <div class="product_rego">
+                <h3 class="ui dividing header"><%= title %></h3>
+                <div class="field">
+                    <%= f.label :location, "Service Location" %>
+                    <%= f.select :location, Location.all.collect {|p| [p.location]}.insert(0, "Select a Location") %>
+                </div>
+                <div class="field">
+                    <%= f.label :price_per_day, "Price per Day" %> <!-- How can I convert form input before loading to database? -->
+                    <%= f.number_field :price_per_day, placeholder: "Price per Day" %>
+                </div>
+                <div class="field">
+                    <%= f.label :service_info, "Service Info" %>
+                    <div class="two fields">
+                        <div class="field">
+                            <%= f.text_field :vehicle_model, placeholder: "E.g. Honda Jazz 2016" %>
+                        </div>
+                        <div class="field">
+                            <%= f.select :vehicle_capacity, [1,2,3,4,5,6,7,8,9,10].insert(0, "Number of Passenger"), placeholder: "E.g. Honda Jazz 2016" %>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <%= f.text_area :vehicle_description, placeholder: "Describe services provided by you. E.g. This vehicle can easily fit 4 passengers and 3 luggages. Mineral water and sweets will be provided throughout the trip." %>
+                    </div>
+                </div>
+                <div class="field">
+                    <%= f.label :vehicle_image, class: "ui huge button" do %>
+                        <i class="ui upload icon"></i>
+                        Upload Vehicle Image
+                    <% end %>
+                    <% f.hidden_field :vehicle_image, value: product.cached_vehicle_image_data %>
+                    <%= f.file_field :vehicle_image, id: "product_vehicle_image", class: "redundant_file_field" %>
+                </div>
+                <div class="field">
+                    <%= f.label :cancellation_policy, "Cancellation Policy" %>
+                    <%= f.select :cancellation_policy, ["Full refund if cancelled 45 days before trip", "Full refund if cancelled 30 days before trip", "Full refund if cancelled 15 days before trip"].insert(0, "Select one") %>
+                </div>
+                <div class="field">
+                    <%= f.label :things_to_note, "Things to Note" %>
+                    <%= f.text_area :things_to_note, placeholder: "Any restrictions or vehicle rules such as no pets, no smoking in the car etc" %>
+                </div>
+            </div>
+        </section>
+
+        <div class="profile_submit profile actions">
+            <%= f.submit "Register Service", class: "fluid ui secondary large button" %>
+        </div>
+    
+    <% end %>
+</section>

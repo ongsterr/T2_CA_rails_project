@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   # Products controller
   get 'sign_up/product', to: 'products#new'
   post 'product', to: 'products#create'
-  get 'product/:id', to: 'products#show'
+  get 'product/:id', to: 'products#show', as: :product_show
   get 'products', to: 'products#index'
   get 'product/:id/edit', to: 'products#edit'
   patch 'product/:id', to: 'products#update'

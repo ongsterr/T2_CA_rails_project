@@ -1,2 +1,50 @@
-<h1>Product List Page by Location</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<div class="ui centered container">
+    <div class="ui vertical masthead aligned segment">
+        <div class="ui breadcrumb">
+            <a class="section">Home</a>
+            <i class="right angle icon divider"></i>
+            <a class="section">Store</a>
+            <i class="right angle icon divider"></i>
+            <div class="active section">T-Shirt</div>
+        </div>
+        <%= form_with scope: :products, method: :get, local: true do |f| %>
+            <% f.label :search_product_name %>
+            <%= f.select :search, Location.all.collect {|p| [p.location]}.insert(0, "Select a Location") %>
+            <%= f.submit "Let's go!" %>
+        <% end %> 
+        <h3 class="ui dividing header">
+            <div class="profile_title">
+                DESTINATION: <%= @search %>
+            </div>
+        </h3>
+    </div>
+
+    <div class="ui cards product">
+        <% @products.each do |p| %>
+        <div class="card">
+            <div class="content">
+                <div class="product_image center aligned">
+                    <%= image_tag p.transporter.profile.profile_image_url(:medium), width: "150", style: "border-radius: 100%;" %>
+                </div>
+                <div class="header">
+                    <%= p.transporter.profile.full_name %>
+                </div>
+                <div class="meta">
+                    @ <%= p.transporter.profile.location %>
+                </div>
+                <div class="description">
+                    <span><strong>Language:</strong> <%= p.transporter.profile.spoken_language %></span><br>
+                    <span><strong>Vehicle:</strong> <%= p.vehicle_model %>, <%= p.vehicle_capacity %> person</span><br>
+                    <span><strong>Price per day:</strong> <%= number_to_currency(p.price_per_day) %></span>
+                </div>
+            </div>
+            <div class="extra content">
+                <a href="<%= product_show_path(p) %>">
+                    <div class="fluid ui basic green button">Let's Go!</div>
+                </a>
+            </div>
+        </div>
+        <% end %>
+    </div>
+
+</div>
