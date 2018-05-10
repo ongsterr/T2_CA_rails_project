@@ -26,19 +26,19 @@ Rails.application.routes.draw do
 
   # Products controller
   get 'sign_up/product', to: 'products#new'
-  post 'product', to: 'products#create'
+  post 'product', to: 'products#create', as: :product_new
   get 'product/:id', to: 'products#show', as: :product_show
   get 'products', to: 'products#index'
   get 'product/:id/edit', to: 'products#edit'
-  patch 'product/:id', to: 'products#update'
+  patch 'product/:id', to: 'products#update', as: :product_update
   delete 'product/:id', to: 'products#destroy'
 
   # Bookings controller  
   get 'booking/new', to: 'bookings#new'
-  post 'booking', to: 'bookings#create'
-  get 'booking/:id', to: 'bookings#show'
+  post 'booking/:id', to: 'bookings#create', as: :booking_create
+  get 'booking/:id', to: 'bookings#show', as: :booking_show
   get 'bookings', to: 'bookings#index'
   get 'booking/:id/edit', to: 'bookings#edit'
-  patch 'booking/:id', to: 'bookings#update'
+  patch 'booking/:id', to: 'bookings#update', as: :booking_update
   delete 'booking/:id', to: 'bookings#destroy'
 end

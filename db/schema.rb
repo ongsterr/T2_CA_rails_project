@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508062846) do
+ActiveRecord::Schema.define(version: 20180510115520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20180508062846) do
     t.boolean "booking_confirmed?"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "itinerary_file_data"
     t.index ["product_id"], name: "index_bookings_on_product_id"
     t.index ["transporter_id"], name: "index_bookings_on_transporter_id"
     t.index ["traveler_id"], name: "index_bookings_on_traveler_id"

@@ -4,5 +4,6 @@ class Product < ApplicationRecord
   has_many :bookings
 
   include ImageUploader[:vehicle_image] # part of Shrine setup
+  include FileUploader[:itinerary_file] # part of Shrine setup
 
 end

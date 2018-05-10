@@ -51,6 +51,19 @@ class BookingsController < ApplicationController
     end
 
     def booking_params
-        params.require(:booking).permit(:booking_date_from, :booking_date_to, :number_of_traveler)
+        params.require(:booking).permit(:booking_date_from, :booking_date_to, :number_of_traveler, :itinerary_file)
+        results = {
+            product_id: session[:product_id],
+            transporter_id: session[:transporter_id],
+            traveler_id: session[:user_id],
+            booking_ref_number: "T2-#{rand.to_s[2..11]}",
+            booking_date_from: params[:booking][:booking_date_from],
+            booking_date_to: params[:booking][:booking_date_to],
+            number_of_traveler: params[:booking][:number_of_traveler],
+            transporter_cost: (params[:booking][:booking_date_to].to_date - params[:booking][:booking_date_from].to_date).to_i * session[:price_per_day].to_i,
+            platform_cost: ((params[:booking][:booking_date_to].to_date - params[:booking][:booking_date_from].to_date).to_i * session[:price_per_day].to_i) * 0.2,
+            total_cost: ((params[:booking][:booking_date_to].to_date - params[:booking][:booking_date_from].to_date).to_i * session[:price_per_day].to_i) * 1.2
+        }
+        return results
     end
 end

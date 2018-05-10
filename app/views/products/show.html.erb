@@ -1,10 +1,100 @@
-<h1>Product Display and Booking Form</h1>
-<p>Find me in app/views/products/show.html.erb</p>
-<p><%= number_to_currency @product.price_per_day %></p>
-<p><%= @product.vehicle_model %></p>
-<p><%= @product.vehicle_capacity %></p>
-<p><%= @product.vehicle_description %></p>
-<p><%= image_tag @product.vehicle_image_url(:medium) %></p>
-<p><%= @product.cancellation_policy %></p>
-<p><%= @product.things_to_note %></p>
-<p><%= @product.location.location %></p>
+
+<section class = "ui grid container">
+    <%= form_with(model: @booking, url: "#{@booking == nil ? booking_create_path : booking_update_path}", local: true, class: "ui form column") do |f| %>
+        <% if @booking != nil %>
+            <% if @booking.errors.any? %>
+                <div id="error_explanation">
+                    <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+                    <ul>
+                        <% @booking.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+        <% end %>
+        <%= image_tag @product.transporter.profile.profile_image_url(:medium), class: "ui centered circular image product" %>
+        <h3 class="ui dividing header">
+            ALOHA, I AM <%= @product.transporter.profile.first_name.upcase %>!
+        </h3>
+        <div class="ui header">
+            $<%= (@product.price_per_day / 100).to_i %> per day
+        </div>
+    
+        <section class="ui segment left aligned">
+            <div class="two fields booking_rego">
+                <div class="field">
+                    <%= f.label :booking_date_from, "Travel From" %>
+                    <%= f.date_field :booking_date_from, placeholder: "Select a date" %>
+                </div>
+                <div class="field">
+                    <%= f.label :booking_date_to, "Travel To" %>
+                    <%= f.date_field :booking_date_to, placeholder: "Select a date" %>
+                </div>
+            </div>
+            <div class="field">
+                <%= f.label :number_of_traveler, "Number of Traveler" %>
+                <%= f.number_field :number_of_traveler, placeholder: "How many is coming?" %>
+            </div>
+            <div class="field">
+                <%= f.label :itinerary_file, class: "ui huge button" do %>
+                    <i class="ui upload icon"></i>
+                    Upload Itinerary File
+                <% end %>
+                
+                <%= f.file_field :itinerary_file, id: "booking_itinerary_file", class: "redundant_file_field" %>
+            </div>
+        </section>
+
+        <%= f.submit "Book Now", class: "fluid ui basic green button" %>
+    
+    <% end %>
+
+</section>
+
+<section class="ui container">
+    <div class="ui vertical segment">
+        <h3 class="ui dividing header">
+            Vehicle Description
+        </h3>
+        <div class="ui card" style="max-width: 100%; min-width: 100%;">
+            <div class="content" style="padding: 0;">
+                <div class="ui items">
+                    <div class="item">
+                        <%= image_tag @product.vehicle_image_url(:medium), class: "ui medium circular image", height: "200" %>
+                        <div class="content vehicle_description">
+                            <h3 class="header"><%= @product.vehicle_model %></h3>
+                            <div class="meta">
+                                <span class="vehicle_capacity"><%= @product.vehicle_capacity.to_i + 1 %> seater, max <%= @product.vehicle_capacity.to_i %> travelers and <%= @product.vehicle_capacity.to_i - 1 %> luggages</span>
+                            </div>
+                            <div class="description vehicle_description">
+                                <p><%= @product.vehicle_description %></p>
+                            </div>
+                            <!--<div class="extra">
+                                <div class="ui label"></div>
+                                <div class="ui label"><i class="globe icon"></i></div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui vertical segment">
+        <h3 class="ui dividing header">
+            Things to Note
+        </h3>
+        <div class="text container">
+            <%= @product.things_to_note %>
+        </div>
+    </div>
+    <div class="ui vertical segment">
+        <h3 class="ui dividing header">
+            Cancellation Policy
+        </h3>
+        <div class="text container">
+            <%= @product.cancellation_policy %>
+        </div>
+    </div>
+</section>

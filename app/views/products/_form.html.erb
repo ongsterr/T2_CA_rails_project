@@ -1,5 +1,5 @@
 <section class = "ui grid container">
-    <%= form_with(model: product, url: product_path, local: true, class: "ui form column") do |f| %>
+    <%= form_with(model: product, url: "#{product == nil ? product_new_path : product_update_path}", local: true, class: "ui form column") do |f| %>
         <% if product.errors.any? %>
             <div id="error_explanation">
                 <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>

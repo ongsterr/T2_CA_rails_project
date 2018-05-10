@@ -20,6 +20,11 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
+    session[:product_id] = @product.id
+    session[:transporter_id] = @product.transporter_id
+    session[:user_id] = current_user.id
+    session[:price_per_day] = @product.price_per_day
   end
 
   def index
@@ -39,7 +44,7 @@ class ProductsController < ApplicationController
   def update
     if @product.update(product_params)
         flash[:notice] = 'Product updated!'
-        redirect_to product_path
+        redirect_to product_show_path
     else
         flash[:alert] = 'Product listing could not be updated!'
         redirect_back
