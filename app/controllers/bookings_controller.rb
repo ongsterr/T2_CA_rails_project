@@ -9,17 +9,28 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.traveler = current_user
+    session[:booking_charge] = @booking.total_cost
+    session[:booking_days] = (@booking.booking_date_to.to_date - @booking.booking_date_from.to_date).to_i
+    session[:booking_driver] = @booking.transporter.profile.full_name
+    session[:booking_location] = @booking.product.location.location
 
     if @booking.save
-        flash[:notice] = 'Booking completed!'
-        redirect_to booking_show_path
+        redirect_to booking_show_path(@booking)
     else
-        flash[:alert] = 'Booking could not be completed!'
         redirect_back
     end
   end
 
   def show
+    @amount = session[:booking_charge]
+    @description = "#{session[:booking_days]} Days with #{session[:booking_driver]} @ #{session[:booking_location]}"
+    @email = current_user.email
+    session[:booking_id] = Booking.find(params[:id]).id
+  end
+
+  def confirm
+    @booking = Booking.find(session[:booking_id])
+    @booking.update(booking_confirmed?: true)
   end
 
   def index

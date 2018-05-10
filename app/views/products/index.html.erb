@@ -35,7 +35,7 @@
                 <div class="description">
                     <span><strong>Language:</strong> <%= p.transporter.profile.spoken_language %></span><br>
                     <span><strong>Vehicle:</strong> <%= p.vehicle_model %>, <%= p.vehicle_capacity %> person</span><br>
-                    <span><strong>Price per day:</strong> <%= number_to_currency(p.price_per_day) %></span>
+                    <span><strong>Price per day:</strong> <%= number_to_currency(p.price_per_day/100) %></span>
                 </div>
             </div>
             <div class="extra content">

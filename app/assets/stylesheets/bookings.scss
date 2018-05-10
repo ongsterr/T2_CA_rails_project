@@ -1,3 +1,23 @@
 // Place all the styles related to the Bookings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ui.segment.cost {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.two.column.row.total {
+    border-top: 1px solid #222222;
+    border-bottom: 1px solid #222222;
+    padding-top: 14px !important;
+}
+
+.stripe-button-el {
+    width: 100%;
+}
+
+.booking_ref {
+    font-size: 16px;
+    text-indent: 12px;
+}

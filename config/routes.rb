@@ -35,10 +35,13 @@ Rails.application.routes.draw do
 
   # Bookings controller  
   get 'booking/new', to: 'bookings#new'
-  post 'booking/:id', to: 'bookings#create', as: :booking_create
+  post 'booking/', to: 'bookings#create', as: :booking_create
   get 'booking/:id', to: 'bookings#show', as: :booking_show
   get 'bookings', to: 'bookings#index'
   get 'booking/:id/edit', to: 'bookings#edit'
   patch 'booking/:id', to: 'bookings#update', as: :booking_update
   delete 'booking/:id', to: 'bookings#destroy'
+  get 'booking/:id/confirm', to: 'bookings#confirm', as: :booking_confirm
+
+  resources :charges
 end

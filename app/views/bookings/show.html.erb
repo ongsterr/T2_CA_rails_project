@@ -1,12 +1,29 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<%= render "booking" %>
+<p></p>
 
-<p><%= @booking.transporter.email %></p>
-<p><%= @booking.traveler.email %></p>
-<p><%= @booking.booking_ref_number %></p>
-<p><%= @booking.booking_date_from %></p>
-<p><%= @booking.booking_date_to %></p>
-<p><%= @booking.number_of_traveler %></p>
-<p><%= number_to_currency @booking.transporter_cost.to_f/100 %></p>
-<p><%= number_to_currency @booking.platform_cost.to_f/100 %></p>
-<p><%= number_to_currency @booking.total_cost.to_f/100 %></p>
+<section class="ui grid container">
+    <div class="column row">
+        <div class="column">
+
+            <%= form_tag charges_path do %>
+                <article>
+                    <% if flash[:error].present? %>
+                        <div id="error_explanation">
+                            <p><%= flash[:error] %></p>
+                        </div>
+                    <% end %>
+                </article>
+                
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-label="Confirm and Pay"
+                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                    data-description="<%= @description %>"
+                    data-amount="<%= number_to_currency @amount.to_i/100 %>"
+                    data-email="<%= @email %>"
+                    data-locale="auto">
+                </script>
+            <% end %>
+
+        </div>
+    </div>
+</section>

@@ -19,6 +19,7 @@ gem 'mailgun-ruby'
 gem 'omniauth-google-oauth2'
 gem 'aws-sdk-s3'
 gem 'fastimage'
+gem 'stripe'
 
 gem 'rails_12factor', group: :production # To solve issue with Devise logout with Heroku
 

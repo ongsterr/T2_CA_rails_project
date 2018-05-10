@@ -1,6 +1,6 @@
 
 <section class = "ui grid container">
-    <%= form_with(model: @booking, url: "#{@booking == nil ? booking_create_path : booking_update_path}", local: true, class: "ui form column") do |f| %>
+    <%= form_with(model: @booking, url: booking_create_path, local: true, class: "ui form column") do |f| %>
         <% if @booking != nil %>
             <% if @booking.errors.any? %>
                 <div id="error_explanation">
@@ -57,7 +57,7 @@
         <h3 class="ui dividing header">
             Vehicle Description
         </h3>
-        <div class="ui card" style="max-width: 100%; min-width: 100%;">
+        <div class="ui card" style="max-width: 100%; min-width: 100%; box-shadow: none;">
             <div class="content" style="padding: 0;">
                 <div class="ui items">
                     <div class="item">
