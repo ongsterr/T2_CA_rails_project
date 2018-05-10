@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   
   # User controller using Devise
   # Need to configure soft_delete functionality with Devise 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: "registrations" }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do
     get '/sign_up/user', to: 'devise/registrations#new'
     delete '/sign_out', to: 'devise/sessions#destroy'
