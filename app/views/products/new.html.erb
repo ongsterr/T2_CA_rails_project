@@ -1,4 +1,10 @@
 
 <section class="ui centered grid container main">
-    <%= render 'form', product: @product, image_size: :medium, title: "Service Registration" %>
+
+    <section class = "ui grid container">
+        <%= form_with(model: product, url: product_new_path, local: true, class: "ui form column") do |f| %>
+            <%= render 'form', product: @product, image_size: :medium, title: "Service Registration" %>
+        <% end %>
+    </section>
+ 
 </section>
