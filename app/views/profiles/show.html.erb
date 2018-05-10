@@ -1,15 +1,17 @@
 <section class="ui centered grid container main">
     <div class="column row">
         <div class="column profile">
-            <!-- Just for testing -->
             <div class="image_profile">
                 <%= image_tag @profile.profile_image_url(:medium), class: "ui small circular image centered" %>
             </div>
+            
             <h4 class="ui dividing header profile">
                 <div class="profile_title">
+                    <div class="ui right aligned sub header edit">[<%= link_to "Edit Profile",  profile_edit_path %>]</div>
                     HELLO, I'M <%= @profile.first_name.upcase %> <br>
                     <div class="location"><%= @profile.location %></div>
                 </div>
+                
             </h4>
             <div class="ui left aligned container about">
                 <h3 class="ui header">
