@@ -44,7 +44,7 @@
                             <i class="ui upload icon"></i>
                             Upload Vehicle Image
                         <% end %>
-                        <% f.hidden_field :vehicle_image, value: product.cached_vehicle_image_data %>
+                        <% f.hidden_field :vehicle_image, value: @product.cached_vehicle_image_data %>
                         <%= f.file_field :vehicle_image, id: "product_vehicle_image", class: "redundant_file_field" %>
                     </div>
                     <div class="field">
