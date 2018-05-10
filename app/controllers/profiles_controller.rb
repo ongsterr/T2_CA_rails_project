@@ -25,6 +25,8 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    rescue ActiveRecord::RecordNotFound
+        redirect_to sign_up_profile_path
   end
 
   def index
