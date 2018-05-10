@@ -84,11 +84,11 @@ After drafting the user stories, I moved on to develop the ERD for the web appli
 
 **Version 1**
 
-![image](app/assets/images/ERD_v1.PNG)
+![image](app/assets/images/ERD_v1.png)
 
 **Version 4**
 
-![image](app/assets/images/ERD_v4.PNG)
+![image](app/assets/images/ERD_v4.png)
 
 The final version was much simpler as I start to consolidate the features required for the web app and understanding what can be accomplished within the given timeframe for the purposes of a minimum viable product.
 
