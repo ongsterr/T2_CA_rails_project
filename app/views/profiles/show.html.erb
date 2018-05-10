@@ -1,70 +1,71 @@
+<section class="ui centered grid container main">
+    <section class="ui grid">
+        <div class="column row">
+            <div class="column profile">
+                <!-- Just for testing -->
+                <div class="image_profile">
+                    <%= image_tag @profile.profile_image_url(:medium), class: "ui small circular image centered" %>
+                </div>
+                <h4 class="ui dividing header profile">
+                    <div class="profile_title">
+                        HELLO, I'M <%= @profile.first_name.upcase %> <br>
+                        <div class="location"><%= @profile.location %></div>
+                    </div>
+                </h4>
+                <div class="ui left aligned container about">
+                    <h3 class="ui header">
+                        <i class="thumbs up outline icon"></i>
+                        <div class="content">
+                            ABOUT ME
+                        </div>
+                    </h3>
+                    <div class="about_me">
+                        "<%= @profile.about_me %>"
+                    </div>
+                </div>
+                <div class="ui left aligned container language">
+                    <h3 class="ui header">
+                        <i class="comments icon"></i>
+                        <div class="content">
+                            I SPEAK
+                        </div>
+                    </h3>
+                    <div class="language_spoken">
+                        "<%= @profile.spoken_language %>"
+                    </div>
+                </div>
+                
+                <h4 class="ui dividing header profile">
+                    <div class="profile_title">
+                        My Reviews
+                    </div>
+                </h4>
 
-<section class="ui grid">
-    <div class="column row">
-        <div class="column profile">
-            <!-- Just for testing -->
-            <div class="image_profile">
-                <%= image_tag @profile.profile_image_url(:medium), class: "ui small circular image centered" %>
-            </div>
-            <h4 class="ui dividing header profile">
-                <div class="profile_title">
-                    HELLO, I'M <%= @profile.first_name.upcase %> <br>
-                    <div class="location"><%= @profile.location %></div>
-                </div>
-            </h4>
-            <div class="ui left aligned container about">
-                <h3 class="ui header">
-                    <i class="thumbs up outline icon"></i>
+                <div class="ui card">
                     <div class="content">
-                        ABOUT ME
+                        <div class="header left aligned"><%= @reviews.reviewer.profile.first_name %></div>
+                        <div class="meta">
+                            <div class="right floated time">2 days ago</div>
+                            <div class="category left aligned"><%= @reviews.reviewer.profile.location %></div>
+                        </div>
+                        <div class="description left aligned">
+                            <p><%= @reviews.review %></p>
+                        </div>
                     </div>
-                </h3>
-                <div class="about_me">
-                    "<%= @profile.about_me %>"
                 </div>
-            </div>
-            <div class="ui left aligned container language">
-                <h3 class="ui header">
-                    <i class="comments icon"></i>
+                <div class="ui card">
                     <div class="content">
-                        I SPEAK
-                    </div>
-                </h3>
-                <div class="language_spoken">
-                    "<%= @profile.spoken_language %>"
-                </div>
-            </div>
-            
-            <h4 class="ui dividing header profile">
-                <div class="profile_title">
-                    My Reviews
-                </div>
-            </h4>
-
-            <div class="ui card">
-                <div class="content">
-                    <div class="header left aligned"><%= @reviews.reviewer.profile.first_name %></div>
-                    <div class="meta">
-                        <div class="right floated time">2 days ago</div>
-                        <div class="category left aligned"><%= @reviews.reviewer.profile.location %></div>
-                    </div>
-                    <div class="description left aligned">
-                        <p><%= @reviews.review %></p>
-                    </div>
-                </div>
-            </div>
-            <div class="ui card">
-                <div class="content">
-                    <div class="header left aligned"><%= @reviews.reviewer.profile.full_name %></div>
-                    <div class="meta">
-                        <div class="right floated time"><%= time_ago_in_words(@reviews.updated_at).pluralize %> ago</div>
-                        <div class="category left aligned"><%= @reviews.reviewer.profile.location %></div>
-                    </div>
-                    <div class="description left aligned">
-                        <p class="review">"<%= @reviews.review %>"</p>
+                        <div class="header left aligned"><%= @reviews.reviewer.profile.full_name %></div>
+                        <div class="meta">
+                            <div class="right floated time"><%= time_ago_in_words(@reviews.updated_at).pluralize %> ago</div>
+                            <div class="category left aligned"><%= @reviews.reviewer.profile.location %></div>
+                        </div>
+                        <div class="description left aligned">
+                            <p class="review">"<%= @reviews.review %>"</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </section>

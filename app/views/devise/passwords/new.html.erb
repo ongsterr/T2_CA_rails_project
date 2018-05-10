@@ -1,30 +1,31 @@
-<div class="ui middle aligned center aligned grid">
-  <div class="column">
 
+<section class="ui centered grid container main">
+  <div class="ui middle aligned center aligned grid">
+    <div class="column">
 
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="ui stacked segment">
+          <h3 class="ui header left aligned">Forgot your password?</h3>
 
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-      <%= devise_error_messages! %>
-      <div class="ui stacked segment">
-        <h3 class="ui header left aligned">Forgot your password?</h3>
-
-        <div class="field">
-          <% f.label :email %>
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Emaill Address" %>
+          <div class="field">
+            <% f.label :email %>
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Emaill Address" %>
+            </div>
+          </div>
+          <p></p>
+          <div class="actions">
+            <%= f.submit "Send me reset password instructions", class: "fluid ui secondary large button" %>
           </div>
         </div>
-        <p></p>
-        <div class="actions">
-          <%= f.submit "Send me reset password instructions", class: "fluid ui secondary large button" %>
-        </div>
+      <% end %>
+
+      <div class="ui message field">
+        <%= render "devise/shared/links" %>
       </div>
-    <% end %>
 
-    <div class="ui message field">
-      <%= render "devise/shared/links" %>
     </div>
-
   </div>
-</div>
+</section>

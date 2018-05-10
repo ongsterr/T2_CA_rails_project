@@ -1,45 +1,47 @@
 
-<div class="ui middle aligned center aligned grid">
-  <div class="column">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "ui large form error") do |f| %>
-      <%= devise_error_messages! %>
-      <div class="ui stacked segment">
-        <h2 class="ui header left aligned"> Welcome to T2 ! </h2>
-        <div class="field dropdown_label">
-          <%= f.label :role, "Are You Signing Up as a Traveler or Transporter?" %>
-          <%= f.select :role, ['Traveler', 'Transporter'], {}, { class: 'ui fluid dropdown' } %>
-        </div>
-        
-        <div class="field">
-          <% f.label :email %><br />
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email Address" %>
+<section class="ui centered grid container main">
+  <div class="ui middle aligned center aligned grid">
+    <div class="column">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "ui large form error") do |f| %>
+        <%= devise_error_messages! %>
+        <div class="ui stacked segment">
+          <h2 class="ui header left aligned"> Welcome to T2 ! </h2>
+          <div class="field dropdown_label">
+            <%= f.label :role, "Are You Signing Up as a Traveler or Transporter?" %>
+            <%= f.select :role, ['Traveler', 'Transporter'], {}, { class: 'ui fluid dropdown' } %>
           </div>
-        </div>
+          
+          <div class="field">
+            <% f.label :email %><br />
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email Address" %>
+            </div>
+          </div>
 
-        <div class="field">
-          <% f.label :password %>
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <%= f.password_field :password, autocomplete: "off", placeholder: "Password (#{@minimum_password_length} characters minimum)" %>
+          <div class="field">
+            <% f.label :password %>
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <%= f.password_field :password, autocomplete: "off", placeholder: "Password (#{@minimum_password_length} characters minimum)" %>
+            </div>
           </div>
-        </div>
 
-        <div class="field">
-          <% f.label :password_confirmation %>
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password Confirmation" %>
+          <div class="field">
+            <% f.label :password_confirmation %>
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password Confirmation" %>
+            </div>
           </div>
+          <p></p>
+          <%= f.submit "Sign Up", class: "fluid ui secondary large button" %>
         </div>
-        <p></p>
-        <%= f.submit "Sign Up", class: "fluid ui secondary large button" %>
+      <% end %>
+
+      <div class="ui message field">
+        <%= render "devise/shared/links" %>
       </div>
-    <% end %>
-
-    <div class="ui message field">
-      <%= render "devise/shared/links" %>
     </div>
   </div>
-</div>
+</section>
