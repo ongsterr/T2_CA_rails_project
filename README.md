@@ -108,7 +108,7 @@ The initial plan was to simplify the design of the app due to time constraint an
 
 ![image](app/assets/images/t2.JPG)
 
-### ** Development**
+### **Development**
 
 Requirements:
 - Create the web application using Ruby on Rails.
