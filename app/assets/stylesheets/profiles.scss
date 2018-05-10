@@ -21,6 +21,7 @@
 
 .ui.dividing.header.profile {
 	text-align: left;
+	// margin-top: 0; // Update for desktop view
 	border-bottom: 1.5px solid #222222;
 	.profile_title {
 		padding-bottom: 8px;
@@ -47,4 +48,8 @@
 
 p.review {
 	text-indent: 15px;
+}
+
+.column.row {
+	padding-top: 0 !important;
 }
