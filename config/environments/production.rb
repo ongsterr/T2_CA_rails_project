@@ -64,13 +64,13 @@ Rails.application.configure do
 
   # Mailgun setup
   config.action_mailer.delivery_method = :smtp
-    ActionMailer::Base.smtp_settings = 
+  ActionMailer::Base.smtp_settings = 
    {
-     :address              => 'smtp.mailgun.org',
      :port                 => ENV['MAILGUN_SMTP_PORT'],
-     :domain               => ENV['MAILGUN_DOMAIN'],
+     :address              => 'smtp.mailgun.org',
      :user_name            => ENV['MAILGUN_SMTP_LOGIN'],
      :password             => ENV['MAILGUN_SMTP_PASSWORD'],
+     :domain               => 'desolate-plateau-51220.herokuapp.com',
      :authentication       => 'plain'
    }
 
