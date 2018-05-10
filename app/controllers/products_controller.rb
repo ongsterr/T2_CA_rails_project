@@ -35,6 +35,8 @@ class ProductsController < ApplicationController
       product_location = Location.find_by(location: params[:products][:search]).id
       @products = Product.where(location_id: product_location)
       @search = params[:products][:search]
+      @country = Location.find_by(location: @search).country
+      @continent = Location.find_by(location: @search).continent
     end
   end
 

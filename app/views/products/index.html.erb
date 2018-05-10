@@ -1,23 +1,27 @@
 <div class="ui centered container">
-    <div class="ui vertical masthead aligned segment">
-        <div class="ui breadcrumb">
-            <a class="section">Home</a>
-            <i class="right angle icon divider"></i>
-            <a class="section">Store</a>
-            <i class="right angle icon divider"></i>
-            <div class="active section">T-Shirt</div>
-        </div>
-        <%= form_with scope: :products, method: :get, local: true do |f| %>
+    <div class="ui segment index">
+        <% if @search != nil %>
+            <div class="ui breadcrumb country">
+                <a class="section"><%= @continent %></a>
+                <i class="right angle icon divider"></i>
+                <a class="section"><%= @country %></a>
+                <i class="right angle icon divider"></i>
+                <a class="section"><%= @search %></a>
+            </div>
+        <% end %>
+        <%= form_with scope: :products, method: :get, local: true, class: "ui form" do |f| %>
             <% f.label :search_product_name %>
-            <%= f.select :search, Location.all.collect {|p| [p.location]}.insert(0, "Select a Location") %>
-            <%= f.submit "Let's go!" %>
+            <div class="field">
+                <%= f.select :search, Location.all.collect {|p| [p.location]}.insert(0, "Select a Location") %>
+            </div>
+            <%= f.submit "Let's Go!", class: " fluid ui labeled icon button" %>
         <% end %> 
+    </div>
         <h3 class="ui dividing header">
             <div class="profile_title">
                 DESTINATION: <%= @search %>
             </div>
         </h3>
-    </div>
 
     <div class="ui cards product">
         <% @products.each do |p| %>
