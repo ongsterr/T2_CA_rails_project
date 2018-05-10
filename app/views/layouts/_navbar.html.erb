@@ -14,7 +14,7 @@
             ACCOUNT
                 <div class="menu">
                     <% if current_user.role == "Transporter" %>
-                        <%= link_to "Drive", sign_up_product, class: "item" %>
+                        <%= link_to "Drive", sign_up_product_path, class: "item" %>
                     <% end %>
                     <%= link_to "Profile", profile_show_path, class: "item" %>
                     <%= link_to "Account", edit_user_registration_path, class: "item" %>
