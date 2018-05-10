@@ -8,13 +8,13 @@
 <div class="ui secondary menu ten wide column nav">
     <div class="right menu", id: "navbar">
         <% if user_signed_in? %>
-            <%= link_to "PROFILE", profile_show_path, class: "item main" %>
+            <%= link_to "TRAVEL", products_path, class: "item main" %>
             <%= link_to "MESSAGE", '#', class: "item main" %>
             <div class="ui simple dropdown item main">
             ACCOUNT
                 <div class="menu">
-                    <%= link_to "Update Profile", profile_edit_path, class: "item" %>
-                    <%= link_to "Update Account", edit_user_registration_path, class: "item" %>
+                    <%= link_to "Profile", profile_show_path, class: "item" %>
+                    <%= link_to "Account", edit_user_registration_path, class: "item" %>
                     <%= link_to "Sign Out", destroy_user_session_path, class: "item", method: :delete %>
                 </div>
             </div>

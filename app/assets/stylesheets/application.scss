@@ -16,6 +16,10 @@
 
 @import "semantic-ui";
 
+.ui.segment{
+    padding: 25px;
+}
+
 .right.menu {
     border-bottom: 2px solid black;
     justify-content: flex-end;
@@ -27,7 +31,7 @@ body {
 }
 
 .column {
-    width: 450px;
+    width: 400px;
 }
 
 .column.nav {
