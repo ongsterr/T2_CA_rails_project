@@ -62,6 +62,22 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "T2_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
+  # Mailgun setup
+  config.action_mailer.delivery_method = :smtp
+    ActionMailer::Base.smtp_settings = 
+   {
+     :address              => 'smtp.mailgun.org',
+     :port                 => ENV['MAILGUN_SMTP_PORT'],
+     :domain               => ENV['MAILGUN_DOMAIN'],
+     :user_name            => ENV['MAILGUN_SMTP_LOGIN'],
+     :password             => ENV['MAILGUN_SMTP_PASSWORD'],
+     :authentication       => 'plain'
+   }
+
+  config.action_mailer.default_url_options = { :host => 'https://desolate-plateau-51220.herokuapp.com/' }
+  config.action_mailer.asset_host = 'https://desolate-plateau-51220.herokuapp.com/'
+  config.action_controller.asset_host = 'https://desolate-plateau-51220.herokuapp.com/'
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
