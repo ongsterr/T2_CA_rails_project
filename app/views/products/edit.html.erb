@@ -2,7 +2,7 @@
 <section class="ui centered grid container main">
 
     <section class = "ui grid container">
-        <%= form_with(model: @product, url: product_edit_path(@product), local: true, class: "ui form column") do |f| %>
+        <%= form_with(model: @product, url: product_update_path(@product), local: true, class: "ui form column") do |f| %>
             <% if @product.errors.any? %>
                 <div id="error_explanation">
                     <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
