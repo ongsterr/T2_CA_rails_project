@@ -54,7 +54,12 @@
     </div>
 </section>
 
-<div class="profile_submit profile actions">
-    <%= f.submit "Register Service", class: "fluid ui secondary large button" %>
-</div>
-    
+<% if product == nil %>
+    <div class="product_submit product actions">
+        <%= f.submit "Register Service", class: "fluid ui secondary large button" %>
+    </div>
+<% else %>
+     <div class="product_submit product actions">
+        <%= f.submit "Update Service", class: "fluid ui secondary large button" %>
+    </div>
+<% end %>
